@@ -5,8 +5,10 @@ declare(strict_types=1);
 namespace Modules\Docker\Common\Infrastructure\Http;
 
 use GuzzleHttp\ClientInterface;
+use GuzzleHttp\Exception\ConnectException;
 use Modules\Docker\Common\Domain\Entities\Response;
 use Modules\Docker\Common\Domain\Interfaces\Http\DockerClientInterface;
+use Modules\Docker\Common\Infrastructure\Exceptions\DockerClientException;
 
 final class ApiDockerClient implements DockerClientInterface
 {
@@ -54,13 +56,17 @@ final class ApiDockerClient implements DockerClientInterface
      */
     private function sendRequest(string $method, string $uri, array $options = []): Response
     {
-        $response = $this->httpClient->request($method, $uri, $options);
+        try {
+            $response = $this->httpClient->request($method, $uri, $options);
 
-        $json = json_decode($response->getBody()->getContents(), true);
+            $json = json_decode($response->getBody()->getContents(), true);
 
-        return new Response(
-            response: $json,
-            status: $response->getStatusCode(),
-        );
+            return new Response(
+                response: $json,
+                status: $response->getStatusCode(),
+            );
+        } catch (ConnectException) {
+            throw DockerClientException::failedToConnect();
+        }
     }
 }
