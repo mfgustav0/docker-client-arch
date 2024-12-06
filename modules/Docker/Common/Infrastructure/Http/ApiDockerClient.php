@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Modules\Docker\Common\Infrastructure\Http;
 
+use GuzzleHttp\ClientInterface;
 use Modules\Docker\Common\Domain\Entities\Response;
 use Modules\Docker\Common\Domain\Interfaces\Http\DockerClientInterface;
-use GuzzleHttp\ClientInterface;
 
 final class ApiDockerClient implements DockerClientInterface
 {

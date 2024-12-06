@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace Modules\Docker\Common\Application\Providers;
 
+use GuzzleHttp\Client;
+use Illuminate\Support\ServiceProvider;
 use Modules\Docker\Common\Domain\Interfaces\Http\DockerClientInterface;
 use Modules\Docker\Common\Infrastructure\Exceptions\DockerClientException;
 use Modules\Docker\Common\Infrastructure\Http\ApiDockerClient;
 use Modules\Docker\Container\Application\Providers\ContainerServiceProvider;
 use Modules\Docker\Image\Application\Providers\ImageServiceProvider;
-use GuzzleHttp\Client;
-use Illuminate\Support\ServiceProvider;
 
 final class DockerServiceProvider extends ServiceProvider
 {

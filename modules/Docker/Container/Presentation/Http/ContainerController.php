@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Modules\Docker\Container\Presentation\Http;
 
-use Modules\Docker\Container\Domain\Interfaces\Services\ContainerServiceInterface;
 use Illuminate\Http\JsonResponse;
+use Modules\Docker\Container\Domain\Interfaces\Services\ContainerServiceInterface;
 
 final class ContainerController
 {

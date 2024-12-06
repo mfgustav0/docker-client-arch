@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Modules\Docker\Container\Application\Providers;
 
+use Illuminate\Support\ServiceProvider;
 use Modules\Docker\Container\Application\Services\ContainerService;
 use Modules\Docker\Container\Domain\Interfaces\Repositories\ContainerRepositoryInterface;
 use Modules\Docker\Container\Domain\Interfaces\Services\ContainerServiceInterface;
 use Modules\Docker\Container\Infrastructure\Repository\ContainerApiRepository;
-use Illuminate\Support\ServiceProvider;
 
 final class ContainerServiceProvider extends ServiceProvider
 {
