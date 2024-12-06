@@ -9,6 +9,9 @@ use Modules\Docker\Container\Domain\Interfaces\Services\ContainerServiceInterfac
 
 final class ContainerController
 {
+    /**
+     * Display a listing of containers.
+     */
     public function index(ContainerServiceInterface $containerService): JsonResponse
     {
         return response()->json(

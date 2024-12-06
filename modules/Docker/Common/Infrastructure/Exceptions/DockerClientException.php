@@ -15,5 +15,4 @@ final class DockerClientException extends RuntimeException
     {
         return new static('The specified Docker client provider is invalid or unsupported.');
     }
-
 }

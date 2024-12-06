@@ -9,6 +9,9 @@ use Modules\Docker\Image\Domain\Interfaces\Services\ImageServiceInterface;
 
 final class ImageController
 {
+    /**
+     * Display a listing of images.
+     */
     public function index(ImageServiceInterface $imageService): JsonResponse
     {
         return response()->json(
