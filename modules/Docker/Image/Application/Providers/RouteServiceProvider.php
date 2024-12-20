@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Modules\Docker\Image\Application\Providers;
 
+use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ProvidersRouteServiceProvider;
 use Illuminate\Support\Facades\Route;
 use Modules\Docker\Image\Presentation\Http\ImageController;
-use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ProvidersRouteServiceProvider;
 
 final class RouteServiceProvider extends ProvidersRouteServiceProvider
 {
