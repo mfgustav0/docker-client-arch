@@ -6,9 +6,10 @@ namespace Modules\Docker\Image\Application\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Modules\Docker\Image\Application\Services\ImageService;
-use Modules\Docker\Image\Domain\Interfaces\Repositories\ImageRepositoryInterface;
-use Modules\Docker\Image\Domain\Interfaces\Services\ImageServiceInterface;
+use Modules\Docker\Image\Application\Providers\RouteServiceProvider;
 use Modules\Docker\Image\Infrastructure\Repository\ImageApiRepository;
+use Modules\Docker\Image\Domain\Interfaces\Services\ImageServiceInterface;
+use Modules\Docker\Image\Domain\Interfaces\Repositories\ImageRepositoryInterface;
 
 final class ImageServiceProvider extends ServiceProvider
 {
@@ -27,6 +28,6 @@ final class ImageServiceProvider extends ServiceProvider
             ImageService::class,
         );
 
-        $this->loadRoutesFrom(__DIR__ . '/../../Presentation/Http/routes.php');
+        $this->app->register(RouteServiceProvider::class);
     }
 }
