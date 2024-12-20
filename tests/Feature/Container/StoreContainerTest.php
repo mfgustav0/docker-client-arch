@@ -20,7 +20,24 @@ final class StoreContainerTest extends TestCase
         ];
 
         $this->postJson('/containers', $payload)
-            ->assertCreated();
+            ->assertCreated()
+            ->assertJsonStructure([
+                'id',
+                'names',
+                'image',
+                'imageId',
+                'command',
+                'created',
+                'state',
+                'status',
+                'ports',
+                'labels',
+                'sizeRw',
+                'sizeRootFs',
+                'hostConfig',
+                'networkSettings',
+                'mounts',
+            ]);
     }
 
     public function test_user_cannot_store_container_if_docker_is_any_error(): void
