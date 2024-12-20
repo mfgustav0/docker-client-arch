@@ -15,16 +15,21 @@ final class ImageMapper
     {
         return new Image(
             $data['Id'] ?? null,
-            $data['ParentId'] ?? null,
+            $data['Parent'] ?? null,
             $data['RepoTags'] ?? [],
             $data['RepoDigests'] ?? [],
             $data['Created'] ?? null,
             $data['Size'] ?? null,
-            $data['SharedSize'] ?? null,
             $data['VirtualSize'] ?? null,
             $data['Labels'] ?? [],
-            $data['Containers'] ?? null,
-            $data['Manifests'] ?? [],
+            $data['DockerVersion'] ?? null,
+            $data['Architecture'] ?? null,
+            $data['Os'] ?? null,
+            $data['OsVersion'] ?? null,
+            $data['Config'] ?? [],
+            $data['RootFS'] ?? [],
+            $data['GraphDriver'] ?? [],
+            $data['Author'] ?? null,
         );
     }
 }

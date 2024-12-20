@@ -16,11 +16,16 @@ final class Image
         public readonly array $repositoryDigests = [],
         public readonly ?int $created = null,
         public readonly ?int $size = null,
-        public readonly ?int $sharedSize = null,
         public readonly ?int $virtualSize = null,
         public readonly array $labels = [],
-        public readonly ?int $containers = null,
-        public readonly array $manifests = [],
+        public readonly ?string $dockerVersion = null,
+        public readonly ?string $architecture = null,
+        public readonly ?string $os = null,
+        public readonly ?string $osVersion = null,
+        public readonly array $config = [],
+        public readonly array $rootFs = [],
+        public readonly array $graphDriver = [],
+        public readonly ?string $author = null,
     ) {}
 
     /**
@@ -35,11 +40,16 @@ final class Image
             'repositoryDigests' => $this->repositoryDigests,
             'created' => $this->created,
             'size' => $this->size,
-            'sharedSize' => $this->sharedSize,
             'virtualSize' => $this->virtualSize,
             'labels' => $this->labels,
-            'containers' => $this->containers,
-            'manifests' => $this->manifests,
+            'dockerVersion' => $this->dockerVersion,
+            'architecture' => $this->architecture,
+            'os' => $this->os,
+            'osVersion' => $this->osVersion,
+            'config' => $this->config,
+            'rootFs' => $this->rootFs,
+            'graphDriver' => $this->graphDriver,
+            'author' => $this->author,
         ];
     }
 }
