@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tests\Feature\Container;
+namespace Tests\Feature\Images;
 
 use Modules\Docker\Image\Domain\Interfaces\Repositories\ImageRepositoryInterface;
 use Tests\Fixtures\Images\ImageFakeRepository;
