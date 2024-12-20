@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\Docker\Common\Infrastructure\Http;
 
 use GuzzleHttp\ClientInterface;
+use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Exception\ConnectException;
 use Modules\Docker\Common\Domain\Entities\Response;
 use Modules\Docker\Common\Domain\Interfaces\Http\DockerClientInterface;
@@ -65,6 +66,12 @@ final class ApiDockerClient implements DockerClientInterface
                 response: $json,
                 status: $response->getStatusCode(),
             );
+        } catch (ClientException $clientException) {
+            $response = $clientException->getResponse()->getBody()->getContents();
+
+            $json = json_decode($response, true);
+
+            throw new DockerClientException($json['message']);
         } catch (ConnectException) {
             throw DockerClientException::failedToConnect();
         }

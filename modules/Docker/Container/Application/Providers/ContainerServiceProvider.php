@@ -27,6 +27,6 @@ final class ContainerServiceProvider extends ServiceProvider
             ContainerService::class,
         );
 
-        $this->loadRoutesFrom(__DIR__ . '/../../Presentation/Http/routes.php');
+        $this->app->register(RouteServiceProvider::class);
     }
 }

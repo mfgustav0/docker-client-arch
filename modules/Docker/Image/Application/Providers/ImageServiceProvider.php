@@ -27,6 +27,6 @@ final class ImageServiceProvider extends ServiceProvider
             ImageService::class,
         );
 
-        $this->loadRoutesFrom(__DIR__ . '/../../Presentation/Http/routes.php');
+        $this->app->register(RouteServiceProvider::class);
     }
 }
