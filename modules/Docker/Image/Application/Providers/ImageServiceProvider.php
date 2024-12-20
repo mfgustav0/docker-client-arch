@@ -6,10 +6,9 @@ namespace Modules\Docker\Image\Application\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Modules\Docker\Image\Application\Services\ImageService;
-use Modules\Docker\Image\Application\Providers\RouteServiceProvider;
-use Modules\Docker\Image\Infrastructure\Repository\ImageApiRepository;
-use Modules\Docker\Image\Domain\Interfaces\Services\ImageServiceInterface;
 use Modules\Docker\Image\Domain\Interfaces\Repositories\ImageRepositoryInterface;
+use Modules\Docker\Image\Domain\Interfaces\Services\ImageServiceInterface;
+use Modules\Docker\Image\Infrastructure\Repository\ImageApiRepository;
 
 final class ImageServiceProvider extends ServiceProvider
 {
