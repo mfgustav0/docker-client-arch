@@ -14,4 +14,11 @@ interface ImageServiceInterface
      * @return array<Image>
      */
     public function listImages(bool $all = false): array;
+
+    /**
+     * Return low-level information about an image.
+     *
+     * @return Image
+     */
+    public function inspectImage(string $name): Image;
 }

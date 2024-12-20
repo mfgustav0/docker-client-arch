@@ -26,4 +26,14 @@ final class ImageService implements ImageServiceInterface
     {
         return $this->imageRepository->listImages($all);
     }
+
+    /**
+     * Return low-level information about an image.
+     *
+     * @return Image
+     */
+    public function inspectImage(string $name): Image
+    {
+        return $this->imageRepository->inspectImage($name);
+    }
 }

@@ -6,7 +6,7 @@ namespace Modules\Docker\Image\Application\Providers;
 
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ProvidersRouteServiceProvider;
 use Illuminate\Support\Facades\Route;
-use Modules\Docker\Image\Presentation\Http\ImageController;
+use Modules\Docker\Image\Presentation\Http\Controllers\ImageController;
 
 final class RouteServiceProvider extends ProvidersRouteServiceProvider
 {
@@ -18,6 +18,7 @@ final class RouteServiceProvider extends ProvidersRouteServiceProvider
         $this->routes(function (): void {
             Route::prefix('images')->group(function (): void {
                 Route::get('/', [ImageController::class, 'index']);
+                Route::get('/{name}', [ImageController::class, 'show']);
             });
         });
     }
