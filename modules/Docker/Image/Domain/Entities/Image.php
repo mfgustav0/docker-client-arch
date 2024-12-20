@@ -14,7 +14,7 @@ final class Image
         public readonly ?string $parentId = null,
         public readonly array $repositoryTags = [],
         public readonly array $repositoryDigests = [],
-        public readonly ?int $created = null,
+        public readonly ?string $created = null,
         public readonly ?int $size = null,
         public readonly ?int $virtualSize = null,
         public readonly array $labels = [],
