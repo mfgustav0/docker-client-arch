@@ -20,5 +20,5 @@ interface ImageServiceInterface
      *
      * @return Image
      */
-    public function inspectImage(string $name): Image;
+    public function inspectImage(string $imageId): Image;
 }

@@ -18,7 +18,7 @@ final class RouteServiceProvider extends ProvidersRouteServiceProvider
         $this->routes(function (): void {
             Route::prefix('images')->group(function (): void {
                 Route::get('/', [ImageController::class, 'index']);
-                Route::get('/{name}', [ImageController::class, 'show']);
+                Route::get('/{imageId}', [ImageController::class, 'show']);
             });
         });
     }
