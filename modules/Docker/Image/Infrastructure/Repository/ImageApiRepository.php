@@ -40,9 +40,9 @@ final class ImageApiRepository implements ImageRepositoryInterface
      *
      * @return Image
      */
-    public function inspectImage(string $name): Image
+    public function inspectImage(string $imageId): Image
     {
-        $result = $this->dockerClient->get("/images/{$name}/json");
+        $result = $this->dockerClient->get("/images/{$imageId}/json");
 
         return ImageMapper::createFromRequest($result->response);
     }

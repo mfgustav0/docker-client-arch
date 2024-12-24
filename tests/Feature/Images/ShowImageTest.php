@@ -14,7 +14,7 @@ final class ShowImageTest extends TestCase
     {
         $this->mockRepository();
 
-        $this->getJson('/images/8.3-mock')
+        $this->getJson('/images/mocked-image-1')
             ->assertOk()
             ->assertJsonStructure([
                 'id',
@@ -53,7 +53,7 @@ final class ShowImageTest extends TestCase
             simulateError: true,
         );
 
-        $this->getJson('/images/8.3-mock')
+        $this->getJson('/images/mocked-image-1')
             ->assertServerError()
             ->assertJsonStructure([
                 'error',

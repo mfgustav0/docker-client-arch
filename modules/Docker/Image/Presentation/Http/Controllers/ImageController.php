@@ -48,11 +48,11 @@ final class ImageController
     /**
      * Display the images.
      */
-    public function show(string $name): JsonResponse
+    public function show(string $imageId): JsonResponse
     {
         try {
             $image = $this->imageService->inspectImage(
-                name: $name,
+                imageId: $imageId,
             );
 
             return response()->json(

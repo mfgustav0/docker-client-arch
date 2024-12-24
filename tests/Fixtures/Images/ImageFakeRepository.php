@@ -54,17 +54,17 @@ final class ImageFakeRepository implements ImageRepositoryInterface
      *
      * @return Image
      */
-    public function inspectImage(string $name): Image
+    public function inspectImage(string $imageId): Image
     {
         $this->throwErrorIfSimulated();
 
         $imageData = array_filter(
             $this->mockedImages,
-            fn(array $image): bool => in_array($name, $image['RepoTags'], true),
+            fn(array $image): bool => $image['Id'] === $imageId,
         );
 
         if (empty($imageData)) {
-            throw new DockerClientException("No such image: {$name}");
+            throw new DockerClientException("No such image: {$imageId}");
         }
 
         return ImageMapper::createFromRequest(array_values($imageData)[0]);

@@ -32,8 +32,8 @@ final class ImageService implements ImageServiceInterface
      *
      * @return Image
      */
-    public function inspectImage(string $name): Image
+    public function inspectImage(string $imageId): Image
     {
-        return $this->imageRepository->inspectImage($name);
+        return $this->imageRepository->inspectImage($imageId);
     }
 }
