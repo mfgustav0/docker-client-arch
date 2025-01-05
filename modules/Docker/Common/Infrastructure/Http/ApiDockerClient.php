@@ -60,7 +60,6 @@ final class ApiDockerClient implements DockerClientInterface
     /**
      * Sends a HTTP request and returns the response.
      */
-    #[Override]
     private function sendRequest(string $method, string $uri, array $options = []): Response
     {
         try {
