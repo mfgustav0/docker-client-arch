@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Modules\Docker\Common\Application\Providers;
 
 use GuzzleHttp\Client;
+use GuzzleHttp\ClientInterface;
 use Illuminate\Support\ServiceProvider;
 use Modules\Docker\Common\Domain\Interfaces\Http\DockerClientInterface;
 use Modules\Docker\Common\Infrastructure\Exceptions\DockerClientException;
@@ -40,6 +41,17 @@ final class DockerServiceProvider extends ServiceProvider
      */
     private function bindDockerClient(): void
     {
+        $this->app->bind('docker.http-client', fn(): ClientInterface => new Client([
+            'base_uri' => config('docker.connections.api.url'),
+            'curl' => [
+                CURLOPT_UNIX_SOCKET_PATH => config('docker.connections.api.certificate_path'),
+            ],
+            'headers' => [
+                'Content-Type' => 'application/json',
+            ],
+            'verify' => false,
+        ]));
+
         $this->app->bind(DockerClientInterface::class, function (): ApiDockerClient {
             $clientType = config('docker.default');
 
@@ -54,19 +66,8 @@ final class DockerServiceProvider extends ServiceProvider
     /**
      * Create the ApiDockerClient instance.
      */
-    private function createApiDockerClient(): ApiDockerClient
+    private function createApiDockerClient(): DockerClientInterface
     {
-        $httpClient = new Client([
-            'base_uri' => config('docker.connections.api.url'),
-            'curl' => [
-                CURLOPT_UNIX_SOCKET_PATH => config('docker.connections.api.certificate_path'),
-            ],
-            'headers' => [
-                'Content-Type' => 'application/json',
-            ],
-            'verify' => false,
-        ]);
-
-        return new ApiDockerClient($httpClient);
+        return new ApiDockerClient($this->app['docker.http-client']);
     }
 }
