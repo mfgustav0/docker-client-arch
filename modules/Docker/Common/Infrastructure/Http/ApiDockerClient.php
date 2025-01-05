@@ -10,6 +10,7 @@ use GuzzleHttp\Exception\ConnectException;
 use Modules\Docker\Common\Domain\Entities\Response;
 use Modules\Docker\Common\Domain\Interfaces\Http\DockerClientInterface;
 use Modules\Docker\Common\Infrastructure\Exceptions\DockerClientException;
+use Override;
 
 final class ApiDockerClient implements DockerClientInterface
 {
@@ -23,6 +24,7 @@ final class ApiDockerClient implements DockerClientInterface
     /**
      * Perform a GET request to the Docker API.
      */
+    #[Override]
     public function get(string $uri, array $options = []): Response
     {
         return $this->sendRequest('GET', $uri, $options);
@@ -31,6 +33,7 @@ final class ApiDockerClient implements DockerClientInterface
     /**
      * Perform a POST request to the Docker API.
      */
+    #[Override]
     public function post(string $uri, array $options = []): Response
     {
         return $this->sendRequest('POST', $uri, $options);
@@ -39,6 +42,7 @@ final class ApiDockerClient implements DockerClientInterface
     /**
      * Perform a PUT request to the Docker API.
      */
+    #[Override]
     public function put(string $uri, array $options = []): Response
     {
         return $this->sendRequest('PUT', $uri, $options);
@@ -47,6 +51,7 @@ final class ApiDockerClient implements DockerClientInterface
     /**
      * Perform a Delete request to the Docker API.
      */
+    #[Override]
     public function delete(string $uri, array $options = []): Response
     {
         return $this->sendRequest('DELETE', $uri, $options);
@@ -55,6 +60,7 @@ final class ApiDockerClient implements DockerClientInterface
     /**
      * Sends a HTTP request and returns the response.
      */
+    #[Override]
     private function sendRequest(string $method, string $uri, array $options = []): Response
     {
         try {
