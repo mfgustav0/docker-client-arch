@@ -17,8 +17,6 @@ interface ImageRepositoryInterface
 
     /**
      * Return low-level information about an image.
-     *
-     * @return Image
      */
     public function inspectImage(string $imageId): Image;
 }

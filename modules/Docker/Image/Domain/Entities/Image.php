@@ -4,28 +4,28 @@ declare(strict_types=1);
 
 namespace Modules\Docker\Image\Domain\Entities;
 
-final class Image
+final readonly class Image
 {
     /**
      * Image entity representing a Docker image.
      */
     public function __construct(
-        public readonly ?string $id,
-        public readonly ?string $parentId = null,
-        public readonly array $repositoryTags = [],
-        public readonly array $repositoryDigests = [],
-        public readonly ?string $created = null,
-        public readonly ?int $size = null,
-        public readonly ?int $virtualSize = null,
-        public readonly array $labels = [],
-        public readonly ?string $dockerVersion = null,
-        public readonly ?string $architecture = null,
-        public readonly ?string $os = null,
-        public readonly ?string $osVersion = null,
-        public readonly array $config = [],
-        public readonly array $rootFs = [],
-        public readonly array $graphDriver = [],
-        public readonly ?string $author = null,
+        public ?string $id,
+        public ?string $parentId = null,
+        public array $repositoryTags = [],
+        public array $repositoryDigests = [],
+        public ?string $created = null,
+        public ?int $size = null,
+        public ?int $virtualSize = null,
+        public array $labels = [],
+        public ?string $dockerVersion = null,
+        public ?string $architecture = null,
+        public ?string $os = null,
+        public ?string $osVersion = null,
+        public array $config = [],
+        public array $rootFs = [],
+        public array $graphDriver = [],
+        public ?string $author = null,
     ) {}
 
     /**

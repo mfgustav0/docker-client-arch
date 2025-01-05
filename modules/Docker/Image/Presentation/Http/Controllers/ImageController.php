@@ -10,7 +10,7 @@ use Modules\Docker\Image\Domain\Interfaces\Services\ImageServiceInterface;
 use Symfony\Component\HttpFoundation\Response as HttpResponse;
 use Throwable;
 
-final class ImageController
+final readonly class ImageController
 {
     /**
      * Create new instance

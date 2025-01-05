@@ -8,8 +8,9 @@ use Modules\Docker\Common\Domain\Interfaces\Http\DockerClientInterface;
 use Modules\Docker\Container\Domain\Entities\Container;
 use Modules\Docker\Container\Domain\Interfaces\Repositories\ContainerRepositoryInterface;
 use Modules\Docker\Container\Infrastructure\Mappers\ContainerMapper;
+use Override;
 
-final class ContainerApiRepository implements ContainerRepositoryInterface
+final readonly class ContainerApiRepository implements ContainerRepositoryInterface
 {
     /**
      * Create new instance
@@ -23,6 +24,7 @@ final class ContainerApiRepository implements ContainerRepositoryInterface
      *
      * @return array<Container>
      */
+    #[Override]
     public function listContainers(bool $all = false): array
     {
         $result = $this->dockerClient->get('/containers/json', [
@@ -38,6 +40,7 @@ final class ContainerApiRepository implements ContainerRepositoryInterface
     /**
      * Creates a new Docker container in the repository.
      */
+    #[Override]
     public function createContainer(string $image, string $name): Container
     {
         $result = $this->dockerClient->post('/containers/create', [
@@ -53,6 +56,7 @@ final class ContainerApiRepository implements ContainerRepositoryInterface
     /**
      * Starts a Docker container from the repository.
      */
+    #[Override]
     public function startContainer(string $containerId): bool
     {
         $result = $this->dockerClient->post("/containers/{$containerId}/start");
@@ -63,6 +67,7 @@ final class ContainerApiRepository implements ContainerRepositoryInterface
     /**
      * Stops a running Docker container in the repository.
      */
+    #[Override]
     public function stopContainer(string $containerId): bool
     {
         $result = $this->dockerClient->post("/containers/{$containerId}/stop");
@@ -73,6 +78,7 @@ final class ContainerApiRepository implements ContainerRepositoryInterface
     /**
      * Removes a Docker container from the repository.
      */
+    #[Override]
     public function removeContainer(string $containerId): bool
     {
         $result = $this->dockerClient->delete("/containers/{$containerId}");

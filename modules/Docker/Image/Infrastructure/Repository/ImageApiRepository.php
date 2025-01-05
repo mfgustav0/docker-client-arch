@@ -8,8 +8,9 @@ use Modules\Docker\Common\Domain\Interfaces\Http\DockerClientInterface;
 use Modules\Docker\Image\Domain\Entities\Image;
 use Modules\Docker\Image\Domain\Interfaces\Repositories\ImageRepositoryInterface;
 use Modules\Docker\Image\Infrastructure\Mappers\ImageMapper;
+use Override;
 
-final class ImageApiRepository implements ImageRepositoryInterface
+final readonly class ImageApiRepository implements ImageRepositoryInterface
 {
     /**
      * Create new instance
@@ -23,6 +24,7 @@ final class ImageApiRepository implements ImageRepositoryInterface
      *
      * @return array<Image>
      */
+    #[Override]
     public function listImages(bool $all = false): array
     {
         $result = $this->dockerClient->get('/images/json', [
@@ -37,9 +39,8 @@ final class ImageApiRepository implements ImageRepositoryInterface
 
     /**
      * Return low-level information about an image.
-     *
-     * @return Image
      */
+    #[Override]
     public function inspectImage(string $imageId): Image
     {
         $result = $this->dockerClient->get("/images/{$imageId}/json");

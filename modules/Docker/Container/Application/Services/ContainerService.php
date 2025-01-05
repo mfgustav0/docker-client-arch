@@ -7,8 +7,9 @@ namespace Modules\Docker\Container\Application\Services;
 use Modules\Docker\Container\Domain\Entities\Container;
 use Modules\Docker\Container\Domain\Interfaces\Repositories\ContainerRepositoryInterface;
 use Modules\Docker\Container\Domain\Interfaces\Services\ContainerServiceInterface;
+use Override;
 
-final class ContainerService implements ContainerServiceInterface
+final readonly class ContainerService implements ContainerServiceInterface
 {
     /**
      * Create new instance
@@ -22,6 +23,7 @@ final class ContainerService implements ContainerServiceInterface
      *
      * @return array<Container>
      */
+    #[Override]
     public function listContainers(bool $all = false): array
     {
         return $this->containerRepository->listContainers($all);
@@ -30,6 +32,7 @@ final class ContainerService implements ContainerServiceInterface
     /**
      * Creates a new Docker container.
      */
+    #[Override]
     public function createContainer(string $image, string $name): Container
     {
         return $this->containerRepository->createContainer(
@@ -41,6 +44,7 @@ final class ContainerService implements ContainerServiceInterface
     /**
      * Starts a Docker container.
      */
+    #[Override]
     public function startContainer(string $containerId): bool
     {
         return $this->containerRepository->startContainer($containerId);
@@ -49,6 +53,7 @@ final class ContainerService implements ContainerServiceInterface
     /**
      * Stops a running Docker container.
      */
+    #[Override]
     public function stopContainer(string $containerId): bool
     {
         return $this->containerRepository->stopContainer($containerId);
@@ -57,6 +62,7 @@ final class ContainerService implements ContainerServiceInterface
     /**
      * Removes a Docker container.
      */
+    #[Override]
     public function removeContainer(string $containerId): bool
     {
         return $this->containerRepository->removeContainer($containerId);

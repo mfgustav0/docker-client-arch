@@ -7,8 +7,9 @@ namespace Modules\Docker\Image\Application\Services;
 use Modules\Docker\Image\Domain\Entities\Image;
 use Modules\Docker\Image\Domain\Interfaces\Repositories\ImageRepositoryInterface;
 use Modules\Docker\Image\Domain\Interfaces\Services\ImageServiceInterface;
+use Override;
 
-final class ImageService implements ImageServiceInterface
+final readonly class ImageService implements ImageServiceInterface
 {
     /**
      * Create new instance
@@ -22,6 +23,7 @@ final class ImageService implements ImageServiceInterface
      *
      * @return array<Image>
      */
+    #[Override]
     public function listImages(bool $all = false): array
     {
         return $this->imageRepository->listImages($all);
@@ -29,9 +31,8 @@ final class ImageService implements ImageServiceInterface
 
     /**
      * Return low-level information about an image.
-     *
-     * @return Image
      */
+    #[Override]
     public function inspectImage(string $imageId): Image
     {
         return $this->imageRepository->inspectImage($imageId);

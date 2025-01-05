@@ -58,7 +58,7 @@ final class ListImageTest extends TestCase
     {
         $this->app->singleton(
             ImageRepositoryInterface::class,
-            fn() => new ImageFakeRepository(
+            fn(): ImageFakeRepository => new ImageFakeRepository(
                 $simulateError,
             ),
         );

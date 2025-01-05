@@ -7,12 +7,14 @@ namespace Modules\Docker\Image\Application\Providers;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ProvidersRouteServiceProvider;
 use Illuminate\Support\Facades\Route;
 use Modules\Docker\Image\Presentation\Http\Controllers\ImageController;
+use Override;
 
 final class RouteServiceProvider extends ProvidersRouteServiceProvider
 {
     /**
      * Bootstrap any application services.
      */
+    #[Override]
     public function boot(): void
     {
         $this->routes(function (): void {

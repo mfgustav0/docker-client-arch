@@ -9,12 +9,14 @@ use Modules\Docker\Container\Application\Services\ContainerService;
 use Modules\Docker\Container\Domain\Interfaces\Repositories\ContainerRepositoryInterface;
 use Modules\Docker\Container\Domain\Interfaces\Services\ContainerServiceInterface;
 use Modules\Docker\Container\Infrastructure\Repository\ContainerApiRepository;
+use Override;
 
 final class ContainerServiceProvider extends ServiceProvider
 {
     /**
      * Register any application services.
      */
+    #[Override]
     public function register(): void
     {
         $this->app->bind(

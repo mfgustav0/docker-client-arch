@@ -13,7 +13,7 @@ final class DockerClientException extends RuntimeException
      */
     public static function wrongClientProvider(): static
     {
-        return new static('The specified Docker client provider is invalid or unsupported.');
+        return new self('The specified Docker client provider is invalid or unsupported.');
     }
 
     /**
@@ -21,7 +21,7 @@ final class DockerClientException extends RuntimeException
      */
     public static function failedToConnect(): static
     {
-        return new static(
+        return new self(
             "Failed to connect to the Docker daemon.\n" .
             "Possible causes:\n" .
             "- Docker is not running.\n" .
