@@ -50,4 +50,4 @@ jobs:
           php artisan key:generate
 
       - name: Tests
-        run: php artisan test --parallel
+        run: composer test
