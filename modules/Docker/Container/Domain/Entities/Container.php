@@ -4,27 +4,27 @@ declare(strict_types=1);
 
 namespace Modules\Docker\Container\Domain\Entities;
 
-final class Container
+final readonly class Container
 {
     /**
      * Container entity representing a Docker Container.
      */
     public function __construct(
-        public readonly ?string $id,
-        public readonly array $names = [],
-        public readonly ?string $image = null,
-        public readonly ?string $imageId = null,
-        public readonly ?string $command = null,
-        public readonly ?int $created = null,
-        public readonly ?string $state = null,
-        public readonly ?string $status = null,
-        public readonly array $ports = [],
-        public readonly array $labels = [],
-        public readonly ?int $sizeRw = null,
-        public readonly ?int $sizeRootFs = null,
-        public readonly array $hostConfig = [],
-        public readonly array $networkSettings = [],
-        public readonly array $mounts = [],
+        public ?string $id,
+        public array $names = [],
+        public ?string $image = null,
+        public ?string $imageId = null,
+        public ?string $command = null,
+        public ?int $created = null,
+        public ?string $state = null,
+        public ?string $status = null,
+        public array $ports = [],
+        public array $labels = [],
+        public ?int $sizeRw = null,
+        public ?int $sizeRootFs = null,
+        public array $hostConfig = [],
+        public array $networkSettings = [],
+        public array $mounts = [],
     ) {}
 
     /**

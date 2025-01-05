@@ -10,7 +10,7 @@ use Modules\Docker\Image\Domain\Interfaces\Repositories\ImageRepositoryInterface
 use Modules\Docker\Image\Infrastructure\Mappers\ImageMapper;
 use Override;
 
-final class ImageApiRepository implements ImageRepositoryInterface
+final readonly class ImageApiRepository implements ImageRepositoryInterface
 {
     /**
      * Create new instance
@@ -39,8 +39,6 @@ final class ImageApiRepository implements ImageRepositoryInterface
 
     /**
      * Return low-level information about an image.
-     *
-     * @return Image
      */
     #[Override]
     public function inspectImage(string $imageId): Image

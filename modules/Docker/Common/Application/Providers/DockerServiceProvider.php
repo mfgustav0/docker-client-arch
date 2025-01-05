@@ -11,12 +11,14 @@ use Modules\Docker\Common\Infrastructure\Exceptions\DockerClientException;
 use Modules\Docker\Common\Infrastructure\Http\ApiDockerClient;
 use Modules\Docker\Container\Application\Providers\ContainerServiceProvider;
 use Modules\Docker\Image\Application\Providers\ImageServiceProvider;
+use Override;
 
 final class DockerServiceProvider extends ServiceProvider
 {
     /**
      * Register any application services.
      */
+    #[Override]
     public function register(): void
     {
         $this->registerServiceProviders();
@@ -38,7 +40,7 @@ final class DockerServiceProvider extends ServiceProvider
      */
     private function bindDockerClient(): void
     {
-        $this->app->bind(DockerClientInterface::class, function () {
+        $this->app->bind(DockerClientInterface::class, function (): ApiDockerClient {
             $clientType = config('docker.default');
 
             if ('api' === $clientType) {

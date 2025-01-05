@@ -9,7 +9,7 @@ use Modules\Docker\Image\Domain\Interfaces\Repositories\ImageRepositoryInterface
 use Modules\Docker\Image\Domain\Interfaces\Services\ImageServiceInterface;
 use Override;
 
-final class ImageService implements ImageServiceInterface
+final readonly class ImageService implements ImageServiceInterface
 {
     /**
      * Create new instance
@@ -31,8 +31,6 @@ final class ImageService implements ImageServiceInterface
 
     /**
      * Return low-level information about an image.
-     *
-     * @return Image
      */
     #[Override]
     public function inspectImage(string $imageId): Image

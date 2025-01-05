@@ -12,7 +12,7 @@ use Modules\Docker\Common\Domain\Interfaces\Http\DockerClientInterface;
 use Modules\Docker\Common\Infrastructure\Exceptions\DockerClientException;
 use Override;
 
-final class ApiDockerClient implements DockerClientInterface
+final readonly class ApiDockerClient implements DockerClientInterface
 {
     /**
      * Create new instance

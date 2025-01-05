@@ -12,21 +12,18 @@ use Modules\Docker\Container\Infrastructure\Mappers\ContainerMapper;
 final class ContainerFakeRepository implements ContainerRepositoryInterface
 {
     /**
-     * Indicates if the repository should simulate errors.
-     */
-    private bool $simulateError;
-
-    /**
      * Mocked list of containers for testing purposes.
      */
     private array $mockedContainers;
 
     /**
      * Create new instance.
+     *
+     * @param bool $simulateError Indicates if the repository should simulate errors.
      */
-    public function __construct(bool $simulateError = false)
-    {
-        $this->simulateError = $simulateError;
+    public function __construct(
+        private readonly bool $simulateError = false,
+    ) {
         $this->mockedContainers = $this->generateMockedContainers();
     }
 
@@ -41,7 +38,7 @@ final class ContainerFakeRepository implements ContainerRepositoryInterface
 
         $filtered = $all
             ? $this->mockedContainers
-            : array_filter($this->mockedContainers, fn($container) => 'running' === $container['State']);
+            : array_filter($this->mockedContainers, fn($container): bool => 'running' === $container['State']);
 
         return array_map(
             fn(array $data): Container => ContainerMapper::createFromRequest($data),

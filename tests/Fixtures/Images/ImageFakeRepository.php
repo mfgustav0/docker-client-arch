@@ -9,13 +9,8 @@ use Modules\Docker\Image\Domain\Entities\Image;
 use Modules\Docker\Image\Domain\Interfaces\Repositories\ImageRepositoryInterface;
 use Modules\Docker\Image\Infrastructure\Mappers\ImageMapper;
 
-final class ImageFakeRepository implements ImageRepositoryInterface
+final readonly class ImageFakeRepository implements ImageRepositoryInterface
 {
-    /**
-     * Indicates if the repository should simulate errors.
-     */
-    private bool $simulateError;
-
     /**
      * Mocked list of images for testing purposes.
      */
@@ -23,10 +18,12 @@ final class ImageFakeRepository implements ImageRepositoryInterface
 
     /**
      * Create new instance.
+     *
+     * @param bool $simulateError Indicates if the repository should simulate errors.
      */
-    public function __construct(bool $simulateError = false)
-    {
-        $this->simulateError = $simulateError;
+    public function __construct(
+        private bool $simulateError = false,
+    ) {
         $this->mockedImages = $this->generateMockedImages();
     }
 
@@ -51,8 +48,6 @@ final class ImageFakeRepository implements ImageRepositoryInterface
 
     /**
      * Return low-level information about an image.
-     *
-     * @return Image
      */
     public function inspectImage(string $imageId): Image
     {
@@ -63,7 +58,7 @@ final class ImageFakeRepository implements ImageRepositoryInterface
             fn(array $image): bool => $image['Id'] === $imageId,
         );
 
-        if (empty($imageData)) {
+        if ([] === $imageData) {
             throw new DockerClientException("No such image: {$imageId}");
         }
 

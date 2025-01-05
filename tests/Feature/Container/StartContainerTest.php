@@ -35,7 +35,7 @@ final class StartContainerTest extends TestCase
     {
         $this->app->singleton(
             ContainerRepositoryInterface::class,
-            fn() => new ContainerFakeRepository(
+            fn(): ContainerFakeRepository => new ContainerFakeRepository(
                 $simulateError,
             ),
         );

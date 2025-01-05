@@ -11,7 +11,7 @@ use Modules\Docker\Container\Presentation\Http\Requests\StoreContainerRequest;
 use Symfony\Component\HttpFoundation\Response as HttpResponse;
 use Throwable;
 
-final class ContainerController
+final readonly class ContainerController
 {
     /**
      * Create new instance

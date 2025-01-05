@@ -10,7 +10,7 @@ use Modules\Docker\Container\Domain\Interfaces\Repositories\ContainerRepositoryI
 use Modules\Docker\Container\Infrastructure\Mappers\ContainerMapper;
 use Override;
 
-final class ContainerApiRepository implements ContainerRepositoryInterface
+final readonly class ContainerApiRepository implements ContainerRepositoryInterface
 {
     /**
      * Create new instance

@@ -9,7 +9,7 @@ use Modules\Docker\Container\Domain\Interfaces\Repositories\ContainerRepositoryI
 use Modules\Docker\Container\Domain\Interfaces\Services\ContainerServiceInterface;
 use Override;
 
-final class ContainerService implements ContainerServiceInterface
+final readonly class ContainerService implements ContainerServiceInterface
 {
     /**
      * Create new instance
