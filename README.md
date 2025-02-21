@@ -1,10 +1,6 @@
 # Documentação da API Docker
 
-<div align="center">
-  <a href="https://www.php.net/manual/pt_BR/"><img src="https://img.shields.io/badge/-php-555555?style=for-the-badge&logo=php" alt="PHP"></a>
-  <a href="https://laravel.com/docs/11.x/" target="_blank"><img src="https://img.shields.io/badge/-laravel-555555?style=for-the-badge&logo=laravel" alt="Laravel"></a>
-  <a href="https://www.docker.com/" target="_blank"><img src="https://img.shields.io/badge/-docker-555555?style=for-the-badge&logo=docker" alt="Docker"></a>
-</div>  
+[![My Skills](https://skillicons.dev/icons?i=php,laravel,docker)](https://skillicons.dev)
 
 ## Visão Geral
 Este repositório fornece uma arquitetura modular para gerenciar containers e imagens Docker usando PHP. O projeto foi desenvolvido com o intuito de estudar TDD e Clean Architecture. A estrutura do projeto é organizada para suportar escalabilidade, separação de responsabilidades e facilidade de manutenção.
